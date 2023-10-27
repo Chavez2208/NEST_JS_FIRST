@@ -1,25 +1,17 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
-import { v4 as uuid } from 'uuid';
 import { Car } from './interfaces/car.interface';
 import { CreateCarDto, UpdateCarDto } from './Dtos';
+import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class CarsService {
 
     private cars: Car[] = [
-        {
-            id: uuid(),
-            brand: 'VMW',
-            year: 2023
-        }, {
-            id: uuid(),
-            brand: 'Crevrolet',
-            year: 2024
-        }, {
-            id: uuid(),
-            brand: 'GOLF',
-            year: 2019
-        }
+        // {
+        //     id: uuid(),
+        //     brand: 'VMW',
+        //     year: 2023
+        // }
     ];
 
     findAll() {
@@ -63,5 +55,9 @@ export class CarsService {
     delete(id: string) {
         const car = this.finOneBydId(id);
         this.cars = this.cars.filter(car => car.id !== id);
+    }
+
+    fillCarsWithSeedData(cars: Car[]) {
+        this.cars = cars
     }
 }

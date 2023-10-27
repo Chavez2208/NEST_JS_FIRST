@@ -19,7 +19,7 @@ export class CarsController {
     }
 
     @Get(':id')
-    getCarById(@Param('id', ParseUUIDPipe) id: string) {
+    getCarById(@Param('id', ParseIntPipe) id: string) {
         return this.carService.finOneBydId(id);
     }
 
